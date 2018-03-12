@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+.capitalize {
+    text-transform: capitalize;
+ }
+
+.scroll-content {
+  background: url(../img/sky-2815020_960_720.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}

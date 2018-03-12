@@ -24,22 +24,71 @@
     -->
 
     <!-- ionic/angularjs js -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/youtubeAPI.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=onJSClientLoad"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="starter" ng-controller="myCtrl" onload="loadDevice()">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+      <ion-header-bar class="bar-assertive">
+        <h1 class="title">Hello World!</h1>
       </ion-header-bar>
-      <ion-content>
+      <ion-content ng-show="homeTab" ng-class="{'has-header has-tabs-top': platform.isAndroid(), 'has-header': !platform.isAndroid()}">
+       <ul class="list padding" >
+        <ion-checkbox ng-model="value42" class="item-energized">
+          This is value 42, right now it is set to: <b class="capitalize">{{value42}}</b>
+          <br>
+          Out of Curiosity, this is the homeTab value. {{homeTab}}
+        </ion-checkbox>
+        <ion-item ng-class="value10">
+          <label><h3 class="padding">Change this item's bg-color</h3></label>
+          <ion-radio ng-model="value10" class="calm" value="item-calm">Blue</ion-radio>
+          <ion-radio ng-model="value10" class="balanced" value="item-balanced">Green</ion-radio>
+          <ion-radio ng-model="value10" value="item-stable">Default </ion-radio>
+        </ion-item>
+        
+       </ul>
       </ion-content>
+
+      <ion-content ng-hide="homeTab" class="padding" ng-class="{'has-header has-tabs-top': platform.isAndroid(), 'has-header': !platform.isAndroid()}">
+        <div>
+          <form id="videoSearcherBar" class="videoSearcherBar">
+            <input type="busqueda" name="busqueda" id="videoSearchQuery" value='' placeholder="Escribe tu busqueda de video Youtube"></input>
+            <input type="submit" id="submitDeYoutube" value="Buscar!"></input> 
+            </form>
+        </div>
+        <div style='position: relative; width: 100%; padding-bottom: 60%;'>
+          <ion-item class="item-calm" id='advertenciaMovil'>
+            Si es usuario en dispositivo movil, pedimos disculpas, la busqueda de Youtube, aun no funciona.
+          </ion-item>
+          <iframe id="ytplayer" type="text/html" scr="" frameborder="0" style="position: absolute; width:90%;height:90%">
+
+          </iframe>
+        </div>
+
+      </ion-content>
+
+      
+        <ion-tabs ng-class="{'has-tabs tabs-assertive': platform.isAndroid(), 'has-tabs tabs-balanced': !platform.isAndroid()}">
+          <ion-tab on-deselect="homeOff()" on-select="homeOn()" title = "Home" icon-on = "ion-ios-home" 
+          icon-off = "ion-ios-home-outline" >
+          
+          </ion-tab>
+          <ion-tab title = "Extras" icon-on = "ion-ios-star" 
+          icon-off = "ion-ios-star-outline" on-select="homeOff()">
+          </ion-tab>
+        </ion-tabs>
+      
     </ion-pane>
   </body>
 </html>

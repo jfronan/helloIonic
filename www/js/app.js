@@ -21,4 +21,20 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
-})
+});
+var app = angular.module('starter', ['ionic','ngAnimate']);
+
+app.controller('myCtrl', function($scope){
+  $scope.value42 = false;
+  $scope.value10 = "item-stable";
+  $scope.homeOff = function(){
+    $scope.homeTab = false;
+   
+  }
+  $scope.homeOn = function(){
+    $scope.homeTab = true;
+  }
+  $scope.platform = ionic.Platform;
+
+});
+
