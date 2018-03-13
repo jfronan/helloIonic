@@ -34,10 +34,14 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/youtubeAPI.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/youtubeAPI.js"></script>
+
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=onJSClientLoad"></script>
   </head>
-  <body ng-app="starter" ng-controller="myCtrl" onload="loadDevice()">
+  <body ng-app="starter" ng-controller="myCtrl">
 
     <ion-pane>
       <ion-header-bar class="bar-assertive">
@@ -62,14 +66,14 @@
 
       <ion-content ng-hide="homeTab" class="padding" ng-class="{'has-header has-tabs-top': platform.isAndroid(), 'has-header': !platform.isAndroid()}">
         <div>
-          <form id="videoSearcherBar" class="videoSearcherBar">
-            <input type="busqueda" name="busqueda" id="videoSearchQuery" value='' placeholder="Escribe tu busqueda de video Youtube"></input>
-            <input type="submit" id="submitDeYoutube" value="Buscar!"></input> 
+          <form id="videoSearcherBar" class="videoSearcherBar padding">
+            <input style="min-height:30px; width: 50%" type="busqueda" name="busqueda" id="videoSearchQuery" value='' placeholder="Escribe tu busqueda de video Youtube"></input>
+            <input class="button button-dark button-small " type="submit" id="submitDeYoutube" value="Buscar!"></input> 
             </form>
         </div>
         <div style='position: relative; width: 100%; padding-bottom: 60%;'>
-          <ion-item class="item-calm" id='advertenciaMovil'>
-            Si es usuario en dispositivo movil, pedimos disculpas, la busqueda de Youtube, aun no funciona.
+          <ion-item class="item-calm text-center margin" id='advertenciaMovil'>
+            Reproductor de youtube de lo que quieras buscar!
           </ion-item>
           <iframe id="ytplayer" type="text/html" scr="" frameborder="0" style="position: absolute; width:90%;height:90%">
 
