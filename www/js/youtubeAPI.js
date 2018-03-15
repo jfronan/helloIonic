@@ -1,7 +1,7 @@
 //$(function loadYout(){
 //		document.addEventListener("deviceready", loadAPI, false)
 //		});
-	
+
 	window.onJSClientLoad = function(){
 		gapi.client.setApiKey('AIzaSyA--agUkn_uzDE2RIb67G9cxep-zTAMMBk');
 		gapi.client.load('youtube', 'v3', function(){
@@ -10,17 +10,12 @@
 		});
 	};
 	
-	$(
-		function() {
-		var searchBar = document.getElementById('videoSearcherBar');
-		//var busquedaQuery = searchBar.busqueda.value
-	
-		searchBar.addEventListener('submit', event => {
-			event.preventDefault()
-	
+	app.controller('youtCtrl', function($scope){
+	$("#videoSearcherBar").submit(function() {
+		event.preventDefault();	
 		var request = gapi.client.youtube.search.list({'maxResults': '1',
 					 'part': 'snippet',
-					 'q': searchBar.busqueda.value,
+					 'q': $scope.busquedaDeVideo,
 					 'type': 'video'});
 	
 		request.execute(function(response){
@@ -32,11 +27,10 @@
 	
 			}
 		});
-	})
-	}
-	)
-	;
-	
+	});
+
+});
+
 	function displayVideo(idURL){
 		$('.videoPlayerDiv').show();
 		$('#advertenciaMovil').hide();

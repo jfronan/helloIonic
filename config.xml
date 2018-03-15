@@ -84,6 +84,7 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.442941380731-pgo26k41mpq0hhhsn9j5cs53k3pk4cm2" />
     </plugin>
+    <allow-navigation href="http://192.168.2.65:8100" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>
