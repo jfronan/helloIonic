@@ -5,9 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 
 
-angular.module('starter', ['ionic', 'ui-router'])
-
-var app = angular.module('starter', ['ionic','ngAnimate','ngResource']);
+//angular.module('starter', ['ionic', 'ui-router', 'ngDraggable'])
+var app = angular.module('starter', ['ionic','ngAnimate','ngResource', 'ngDraggable', 'ngCordova']);
 
 
 app.run(function($ionicPlatform) {
@@ -45,7 +44,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
        controller: 'myCtrl'    
      }
     }
-   });
+   })
+   .state('dragTest',{
+    views: {
+      'dragger' :{
+      templateUrl: 'views/dragTest.html',
+      controller: 'myCtrl'    
+    }
+   }
+  });
    $urlRouterProvider.otherwise('homeTab');
 });
 
